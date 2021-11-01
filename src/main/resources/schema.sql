@@ -1,0 +1,25 @@
+CREATE TABLE IF NOT EXISTS USERS (
+  `userid` int(20) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(20),
+  `salt` VARCHAR(255) NULL,
+  `password` VARCHAR(255),
+  `firstname` VARCHAR(20),
+  `lastname` VARCHAR(20)
+);
+
+
+CREATE TABLE IF NOT EXISTS MESSAGES (
+ `messageid` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+ `username` VARCHAR NOT NULL,
+ `messagetext` VARCHAR NOT NULL
+);
+
+
+
+Drop TABLE IF EXISTS blobs
+CREATE TABLE blobs (
+  `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `file_name` VARCHAR(255) NULL,
+  `username` VARCHAR(20),
+  `image_content` BLOB NULL,
+);

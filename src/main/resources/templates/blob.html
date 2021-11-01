@@ -1,0 +1,31 @@
+<h2 th:if="${logged_user}" th:text="'Hello Logged User: ' +${logged_user} + 'We Add New Feature upload blob try it'"></h2>
+<form action="#" th:action="@{'/blob'}" enctype="multipart/form-data" method="POST">
+    <label for="fileUpload">Upload any File Smaller Than 512KB we have to save your file secure</label>
+    <!-- <input id="newMessageText" name="newMessageText" th:field="*{text}" type="text"> -->
+    <input type="file" id="fileUpload" name="fileUpload">
+    <input type="submit" value="submit">
+</form>
+<div th:if="${flash}" style="padding:10px;background:lightgreen;width:60%;margin-left:auto;margin-right:auto;margin-bottom:50px;">
+    <span th:text="${flash}"></span>
+</div>
+
+<img th:if="${img}" th:src="${img}">
+
+<script>
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', '/data');
+    xhr.responseType = 'blob';
+    xhr.onload = display;
+    xhr.send();
+
+    function display(evt) {
+      // we did set xhr.responseType = "blob"
+      var blob = evt.target.response;  // so this is a Blob
+      // hence, no need for anything else than
+      var url = URL.createObjectURL(blob);
+      var img = new Image();
+      img.src = url;
+      document.body.appendChild(img);
+      }
+
+</script>

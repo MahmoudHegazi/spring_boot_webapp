@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+</head>
+<body>
+<h2>Hello</h2>
+<h1 th:each="msg : ${greetings}" th:text="${msg}" th:unless="${msg.contains('Goodbye')}">Hello, homepage!</h1>
+
+<h1 th:if="${auth}" th:text="'nice you display data from auth alone easy' + ${auth}"></h1>
+<p th:if="${details}" th:text="${details}"></p>
+
+<div th:if="${user}">
+    <h2>Hello Your Profile Mr: <span th:text="${user.lastName}"></span></h2>
+</div>
+
+
+<p th:if="${messages}" th:each="message, data : ${messages}" th:text="${message.messageText}"></p>
+</body>
+</html>
